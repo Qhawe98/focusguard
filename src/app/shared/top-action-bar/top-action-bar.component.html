@@ -1,0 +1,6 @@
+<GridLayout *ngIf="isVisible" row="0" columns="60, *, 60" class="custom-header">
+    <Label col="0" *ngIf="isBackButtonVisible" text="Back" class="header-text" (tap)="goBack()">
+    </Label>
+    <Label col="1" [text]="title" class="header-title"></Label>
+    <Label col="2" text=""></Label>
+</GridLayout>

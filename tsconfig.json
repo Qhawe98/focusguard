@@ -8,14 +8,33 @@
     "noEmitHelpers": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
-    "lib": ["ESNext", "dom"],
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["src/tests/**/*.ts", "src/**/*.ios.ts", "src/**/*.android.ts"],
-  "files": ["./src/main.ts", "./references.d.ts", "./src/polyfills.ts"],
-  "exclude": ["node_modules", "platforms", "e2e"]
+  "include": [
+    "src/tests/**/*.ts",
+    "src/**/*.ios.ts",
+    "src/**/*.android.ts"
+  ],
+  "files": [
+    "./src/main.ts",
+    "./references.d.ts",
+    "./src/polyfills.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "platforms",
+    "e2e"
+  ]
 }

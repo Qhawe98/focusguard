@@ -1,3 +1,27 @@
-<GridLayout>
-  <page-router-outlet></page-router-outlet>
+<GridLayout rows="auto, *, auto" iosOverflowSafeArea="true" class="main-container" androidOverflowEdge="top,bottom">
+  <ns-top-action-bar row="0" [title]="currentTitle" [isBackButtonVisible]="activeButton !== 'home'">
+  </ns-top-action-bar>
+  <page-router-outlet row="1" actionBarVisibility="never"></page-router-outlet>
+
+  <GridLayout row="2" columns="*, *, *" class="nav-bar">
+
+    <StackLayout col="0" class="nav-item" (tap)="onHomeClick()">
+      <Label class="fas" [class.nav-item-active]="activeButton === 'home'"="'fa-home' | fonticon">
+      </Label>
+      <Label text="Home" class="nav-label"></Label>
+    </StackLayout>
+
+    <StackLayout col="1" class="nav-item" (tap)="onShieldClick()">
+      <Label class="fas" [class.nav-item-active]="activeButton === 'shield'"="'fa-shield' | fonticon">
+      </Label>
+      <Label text="Shield" class="nav-label"></Label>
+    </StackLayout>
+
+    <StackLayout col="2" class="nav-item" (tap)="onSettingsClick()">
+      <Label class="fas" [class.nav-item-active]="activeButton === 'settings'"="'fa-gear' | fonticon">
+      </Label>
+      <Label text="Settings" class="nav-label"></Label>
+    </StackLayout>
+
+  </GridLayout>
 </GridLayout>

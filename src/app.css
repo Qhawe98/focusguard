@@ -1,3 +1,237 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.far {
+  font-family: "Font Awesome 7 Regular", "fa-regular";
+  font-weight: 400;
+}
+
+.fab {
+  font-family: "Font Awesome 7 Brands", "fa-brands";
+  font-weight: 400;
+}
+
+.fas {
+  font-family: "Font Awesome 7 Free", "fa-solid";
+  font-weight: 900;
+}
+
+ActionBar {
+  visibility: collapse;
+}
+
+.main-container {
+  background-color: #101a3a;
+}
+
+.home-container {
+  background-color: #101a3a;
+  padding: 10;
+}
+
+/*
+    Protection circle
+*/
+
+.protection-container {
+  vertical-align: middle;
+  height: 250;
+}
+
+.shield-base {
+  width: 200;
+  height: 200;
+  border-radius: 100;
+  border-width: 4;
+  justify-content: center;
+  align-items: center;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.shield-on {
+  background-color: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  box-shadow: 0 0 20 #00ff00;
+}
+
+.shield-on {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.shield-off {
+  background-color: rgba(128, 128, 128, 0.1);
+  border-color: #808080;
+  opacity: 0.6;
+}
+
+.shield-off {
+  color: #808080;
+}
+
+.shield-icon {
+  font-size: 50;
+  margin-bottom: 10;
+}
+
+.shield-text-protection {
+  font-size: 22;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.shield-text-on-off {
+  font-size: 60;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/**
+* Stats
+*/
+.stats-header {
+  font-size: 24;
+  margin: 10 15;
+  color: white;
+}
+
+.stats-wrapper {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10 0;
+}
+
+/* Stats CSS */
+.stats-block {
+  width: 120;
+  height: 220;
+  background-color: #6e717a;
+  border-radius: 15;
+  padding: 10;
+  border-width: 0.2;
+  justify-content: space-between;
+  gap: 4;
+}
+
+.stats-block Label {
+  text-align: center;
+  width: 100%;
+}
+
+.stat-icon{
+    font-size: bold;
+    margin: 10 0;
+}
+
+.stat-count {
+  font-size: 30;
+  font-weight: bold;
+  color: #4ade80;
+}
+
+.stat-title {
+  font-size: 18;
+  color: #cccccc;
+  text-align: center;
+  height: 100;
+}
+
+/**
+* Emergency
+*/
+.emergency-header {
+  font-size: 24;
+  margin: 10 0;
+  color: white;
+}
+
+
+.emergency-toggle-container {
+    padding: 10 10;
+}
+
+
+.emergency-toggle-btn {
+    height: 70;
+    width: auto;
+    border-radius: 15;
+    padding: 10;
+    font-size: 22;
+    color: white;
+    background-color: #6e717a;
+}
+
+.emergency-toggle-btn-icon {
+    width: auto;
+    font-size: 18;
+    color: white;
+    background-color: #101a3a;
+}
+
+/**
+* Nav-bar CSS
+*/
+
+.nav-bar {
+  background-color: #6e717a;
+  margin: 0;
+  padding: 10 0;
+  padding-bottom: 20;
+}
+
+.nav-item {
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff;
+}
+
+.nav-item-active {
+  color: #4ade80;
+  background-color: antiquewhite;
+  width: 100px;
+  height: auto;
+  border-radius: 10%;
+}
+
+.fas {
+  font-family: "Font Awesome 6 Free", "fa-solid-900";
+  font-weight: 900;
+}
+
+.icon {
+  font-size: 24;
+  color: #333333;
+  margin-bottom: 2;
+}
+
+.nav-label {
+  font-size: 12;
+  margin-top: 2;
+  text-align: center;
+  color: #ffffff;
+}
+
+.custom-header {
+  background-color: #6e717a;
+  padding-top: 40;
+  padding-bottom: 10;
+  height: auto;
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: 18;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header-text {
+  color: #ffffff;
+  font-size: 14;
+  text-align: center;
+  vertical-align: middle;
+}
