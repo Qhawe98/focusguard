@@ -1,21 +1,19 @@
 <GridLayout class="home-container" rows="*,auto,auto">
-    <StackLayout row="0" class="protection-container">
-        <StackLayout [class.shield-on]="isProtected" [class.shield-off]="!isProtected" class="shield-base">
-            <Label
-                class="fas shield-icon"="isProtected ? ('fa-shield-halved' | fonticon) : ('fa-shield' | fonticon)"></Label>
-            <Label [text]="isProtected ? 'Protection' : 'Protection'" class="shield-text-protection"
-                textWrap="true"></Label>
-            <Label [text]="isProtected ? 'On' : 'Off'" class="shield-text-on-off" textWrap="true"></Label>
+    <StackLayout [class.shield-on]="isProtected" [class.shield-off]="!isProtected" class="shield-base">
+        <Label class="fas shield-icon" [text]="isProtected ? '\uf3ed' : '\uf3ed'"></Label>
 
-        </StackLayout>
+        <Label text="Protection" class="shield-text-protection"></Label>
+
+        <Label [text]="isProtected ? 'On' : 'Off'" class="shield-text-on-off"></Label>
     </StackLayout>
+
 
     <StackLayout row="1" class="statistics-container">
         <label class="stats-header">Key Stats</label>
         <FlexboxLayout class="stats-wrapper" flexWrap="wrap">
             <StackLayout *ngFor="let stat of stats" class="stats-block" horizontal-alignment="center"
                 vertical-alignment="middle">
-                <label class="stat-icon">ICON</label>
+                <label class="fas stat-icon" [text]="stat.icon"></label>
                 <Label [text]="stat.title" class="stat-title" textWrap="true"></Label>
                 <Label [text]="stat.count" class="stat-count"></Label>
             </StackLayout>
@@ -23,9 +21,8 @@
     </StackLayout>
 
     <StackLayout row="2" class="emergency-toggle-container">
-        <label class="emergency-header">Quick Toggle</label>
-        <Button text="Activate Emergency Lockdown" (tap)="activateEmergencyLockdown()" class="emergency-toggle-btn"
-            image="res://icon_emergency">
+        <label class="emergency-header">Lock More</label>
+        <Button text="Start Focus" (tap)="showFocusModal()" class="emergency-toggle-btn" image="res://icon_emergency">
         </Button>
     </StackLayout>
 </GridLayout>

@@ -1,0 +1,27 @@
+<StackLayout class="p-20 bg-white" borderRadius="20">
+    <Label text="Set Lock Duration" class="h2 text-center m-b-20"></Label>
+
+    <Button text="30 Minutes" class="btn-outline" (tap)="selectQuickTime(30)"></Button>
+
+    <GridLayout columns="*, auto" class="btn-outline" (tap)="selectQuickTime(60)">
+        <Label col="0" text="1 Hour" verticalAlignment="middle"></Label>
+        <Label col="1" text="   PRO" class="pro-badge" *ngIf="!isPremium"></Label>
+    </GridLayout>
+
+    <Button text="Until I turn it off" class="btn-outline" (tap)="selectQuickTime(-1)"></Button>
+
+    <!-- Corrected Separator -->
+    <StackLayout class="separator m-v-15"></StackLayout>
+
+    <Button [text]="showCustomPicker ? 'Close Picker' : 'Custom Time (Pro)'" class="btn-flat"
+        (tap)="onCustomTime()"></Button>
+
+    <!-- Custom Picker Logic -->
+    <StackLayout *ngIf="showCustomPicker" class="picker-container">
+        <!-- We use #picker to grab the value in TS -->
+        <TimePicker #picker class="time-picker" verticalAlignment="middle"></TimePicker>
+        <Button text="Confirm Custom Time" class="btn-primary" (tap)="confirmCustomTime(picker)"></Button>
+    </StackLayout>
+
+    <Button text="Cancel" class="btn-cancel m-t-10" (tap)="close()"></Button>
+</StackLayout>

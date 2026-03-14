@@ -1,3 +1,29 @@
-<GridLayout>
-    <label>Shield</label>
+<GridLayout rows="auto, auto, auto, auto, auto,*" class="shield-container">
+    <Label row="0" class="lock-category-label" text="Filter Categories" textAlignment="left"></Label>
+
+    <ScrollView row="1">
+        <StackLayout>
+            <StackLayout *ngFor="let item of categories" class="manual-lock-container">
+                <GridLayout columns="*, auto" verticalAlignment="middle">
+                    <Label col="0" [text]="item.title" class="inner-label" verticalAlignment="middle"></Label>
+                    <Switch col="1" [checked]="item.isLocked" (checkedChange)="onToggle(item, $event)">
+                    </Switch>
+                </GridLayout>
+                <Label *ngIf="item.isLocked" text="Locked for: 1 hour" class="duration-text">
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <Label row="2" class="lock-category-label" text="Schedule Lock" textAlignment="left"></Label>
+    <StackLayout row="3" class="scheduled-lock-container">
+        <GridLayout columns="*, auto" verticalAlignment="middle">
+            <Label col="0" text="Scheduled Lock" class="inner-label"></Label>
+            <Switch col="1" verticalAlignment="middle"></Switch>
+        </GridLayout>
+    </StackLayout>
+
+    <StackLayout row="4">
+        <!-- App list or Schedule details go here -->
+    </StackLayout>
 </GridLayout>

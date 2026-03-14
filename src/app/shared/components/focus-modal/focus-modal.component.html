@@ -1,0 +1,64 @@
+<GridLayout [rows]="isAnyExpanded ? 'auto, auto, *, auto' : 'auto, auto, auto, auto'"
+    [class]="isAnyExpanded ? 'h-[60%] modal-container' : 'h-auto modal-container'" class="modal-container">
+
+    <StackLayout row="0" class="focus-modal-header">
+        <Label text="Setup Your Focus" class="h1 text-center"></Label>
+    </StackLayout>
+
+    <GridLayout row="1" columns="*, *, *, *" class="duration-chips">
+        <Button text="15m" col="0" (tap)="setDuration(15)" [class.active-chip]="selectedMinutes === 15"
+            class="chip"></Button>
+        <Button text="30m" col="1" (tap)="setDuration(30)" [class.active-chip]="selectedMinutes === 30"
+            class="chip"></Button>
+        <Button text="1h" col="2" (tap)="setDuration(60)" [class.active-chip]="selectedMinutes === 60"
+            class="chip"></Button>
+        <Button text="2h" col="3" (tap)="setDuration(120)" [class.active-chip]="selectedMinutes === 120"
+            class="chip"></Button>
+    </GridLayout>
+
+
+
+    <ScrollView row="2" class="app-container">
+        <StackLayout>
+            <StackLayout *ngFor="let cat of categories" [class.opacity-40]="cat.apps.length === 0" class="category-box">
+
+
+                <GridLayout columns="*, auto, auto" class="category-header" (tap)="toggleExpand(cat)">
+                    <StackLayout col="0" orientation="horizontal">
+                        <Label *ngIf="cat.apps.length > 0" [text]="cat.expanded ? '▼' : '▶'" class="chevron"></Label>
+                        <Label [text]="cat.title" class="category-title"></Label>
+                    </StackLayout>
+
+                    <!-- LOADING SPINNER -->
+                    <ActivityIndicator col="1" [busy]="cat.loading" *ngIf="cat.loading" width="20" height="20"
+                        class="m-r-10"></ActivityIndicator>
+
+                    <!-- APP COUNT (Hidden while loading) -->
+                    <Label col="1" *ngIf="!cat.loading" [text]="cat.apps.length === 0 ? '' : cat.apps.length + ' apps'"
+                        class="cat-count"></Label>
+
+                    <Switch col="2" *ngIf="cat.apps.length > 0" [checked]="isAllSelected(cat)"
+                        (checkedChange)="toggleAll(cat, $event)" class="app-switch">
+                    </Switch>
+                </GridLayout>
+
+
+                <StackLayout *ngIf="cat.expanded" class="app-panel">
+                    <GridLayout columns="auto, *, auto" *ngFor="let app of cat.apps" class="app-row-item">
+                        <Image [src]="app.icon" col="0" width="27" height="27" class="app-icon"></Image>
+                        <Label [text]="app.name" col="1" class="app-name-text"></Label>
+                        <Switch col="2" [checked]="app.selected" (checkedChange)="onAppToggle(app, cat, $event)"
+                            class="app-switch">
+                        </Switch>
+                    </GridLayout>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <GridLayout row="3" columns="auto,*, auto" class="footer">
+        <Button text="Cancel" col="0" (tap)="onClose()" class="btn-cancel"></Button>
+        <Button text="Start Focus" col="2" (tap)="onStart()" class="btn-primary"></Button>
+    </GridLayout>
+</GridLayout>

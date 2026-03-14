@@ -1,0 +1,29 @@
+.bg-white {
+  background-color: #ffffff;
+  elevation: 5;
+  box-shadow: 0 5 10 rgba(0, 0, 0, 0.2);
+}
+
+.picker-container {
+    margin: 10 0;
+    padding: 10;
+    background-color: #f8f9fa;
+    border-radius: 10;
+}
+
+.time-picker {
+    height: 150; 
+    margin-bottom: 10;
+}
+
+.h2 {
+  font-size: 20;
+  font-weight: bold;
+  color: #101a3a;
+}
+
+.separator {
+  height: 1;
+  background-color: #eeeeee;
+  width: 100%;
+}
