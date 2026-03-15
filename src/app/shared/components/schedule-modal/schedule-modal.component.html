@@ -1,0 +1,93 @@
+<GridLayout [rows]="isAnyExpanded ? 'auto, auto, auto, *, auto' : 'auto,auto, auto, auto, auto'" class="schedule-modal"
+    [height]="isAnyExpanded? '600':'auto'">
+    <GridLayout row="0" class="modal-title">
+        <Label text="Schedule Focus" class="h1 text-center"></Label>
+    </GridLayout>
+
+    <StackLayout row="1" class="time-container">
+        <Label text="Select Time Slot" class="section-header"></Label>
+
+        <GridLayout columns="*,10, *">
+            <GridLayout col="0" columns="auto,5, *" class="time-box m-r-5">
+                <Label col="0" text="&#xf017;" class="fas time-icon"></Label>
+                <StackLayout col="2">
+                    <Label text="Start Time" class="time-label"></Label>
+                    <ns-time-picker-modal class="time-value"></ns-time-picker-modal>
+                </StackLayout>
+            </GridLayout>
+
+            <GridLayout col="2" columns="auto,5, *" class="time-box m-l-5">
+                <Label col="0" text="&#xf017;" class="fas time-icon"></Label>
+                <StackLayout col="2">
+                    <Label text="End Time" class="time-label"></Label>
+                    <ns-time-picker-modal class="time-value"></ns-time-picker-modal>
+                </StackLayout>
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
+
+    <StackLayout row="2" class="occurence-container">
+        <Label text="Recurrence" class="occurence-section-header"></Label>
+
+        <GridLayout columns="*, *, *, *, *, *, *" class="m-t-10">
+            <Button col="0" text="S" (tap)="toggleDay(0)" [class.day-active]="days[0]" class="day-circle"></Button>
+            <Button col="1" text="M" (tap)="toggleDay(1)" [class.day-active]="days[1]" class="day-circle"></Button>
+            <Button col="2" text="T" (tap)="toggleDay(2)" [class.day-active]="days[2]" class="day-circle"></Button>
+            <Button col="3" text="W" (tap)="toggleDay(3)" [class.day-active]="days[3]" class="day-circle"></Button>
+            <Button col="4" text="T" (tap)="toggleDay(4)" [class.day-active]="days[4]" class="day-circle"></Button>
+            <Button col="5" text="F" (tap)="toggleDay(5)" [class.day-active]="days[5]" class="day-circle"></Button>
+            <Button col="6" text="S" (tap)="toggleDay(6)" [class.day-active]="days[6]" class="day-circle"></Button>
+        </GridLayout>
+
+        <GridLayout columns="*, auto" class="m-t-15">
+            <Label col="0" text="Repeat Weekly" class="text-white font-semibold"></Label>
+            <Switch col="1" [(ngModel)]="isWeekly" class="app-switch"></Switch>
+        </GridLayout>
+    </StackLayout>
+
+    <ScrollView row="3" class="app-container">
+        <StackLayout>
+            <label text="Restrict Apps" class="app-header"></label>
+            <StackLayout *ngFor="let cat of categories" [class.opacity-40]="cat.apps.length === 0" class="category-box">
+
+
+                <GridLayout columns="*, auto, auto" class="category-header" (tap)="toggleExpand(cat)">
+                    <StackLayout col="0" orientation="horizontal">
+                        <Label *ngIf="cat.apps.length > 0" [text]="cat.expanded ? '▼' : '▶'" class="chevron"></Label>
+                        <Label [text]="cat.title" class="category-title"></Label>
+                    </StackLayout>
+
+                    <!-- LOADING SPINNER -->
+                    <ActivityIndicator col="1" [busy]="cat.loading" *ngIf="cat.loading" width="20" height="20"
+                        class="m-r-10"></ActivityIndicator>
+
+                    <!-- APP COUNT (Hidden while loading) -->
+                    <Label col="1" *ngIf="!cat.loading" [text]="cat.apps.length === 0 ? '' : cat.apps.length + ' apps'"
+                        class="cat-count"></Label>
+
+                    <Switch col="2" *ngIf="cat.apps.length > 0" [checked]="isAllSelected(cat)"
+                        (checkedChange)="toggleAll(cat, $event)" class="app-switch">
+                    </Switch>
+                </GridLayout>
+
+
+                <StackLayout *ngIf="cat.expanded" class="app-panel">
+                    <GridLayout columns="auto, *, auto" *ngFor="let app of cat.apps" class="app-row-item">
+                        <Image [src]="app.icon" col="0" width="27" height="27" class="app-icon"></Image>
+                        <Label [text]="app.name" col="1" class="app-name-text"></Label>
+                        <Switch col="2" [checked]="app.selected" (checkedChange)="onAppToggle(app, cat, $event)"
+                            class="app-switch">
+                        </Switch>
+                    </GridLayout>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <GridLayout row="4" columns="auto,*, auto" class="footer">
+        <Button text="Cancel" col="0" (tap)="onClose()" class="btn-cancel"></Button>
+        <Button text="Schedule" col="2" (tap)="onSchedule()" class="btn-schedule"></Button>
+    </GridLayout>
+
+</GridLayout>

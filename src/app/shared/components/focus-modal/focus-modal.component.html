@@ -1,5 +1,5 @@
 <GridLayout [rows]="isAnyExpanded ? 'auto, auto, *, auto' : 'auto, auto, auto, auto'"
-    [class]="isAnyExpanded ? 'h-[60%] modal-container' : 'h-auto modal-container'" class="modal-container">
+    [height]="isAnyExpanded? '600':'auto'" class="modal-container">
 
     <StackLayout row="0" class="focus-modal-header">
         <Label text="Setup Your Focus" class="h1 text-center"></Label>
@@ -59,6 +59,6 @@
 
     <GridLayout row="3" columns="auto,*, auto" class="footer">
         <Button text="Cancel" col="0" (tap)="onClose()" class="btn-cancel"></Button>
-        <Button text="Start Focus" col="2" (tap)="onStart()" class="btn-primary"></Button>
+        <Button text="Start Focus" col="2" (tap)="onStart()" class="btn-start"></Button>
     </GridLayout>
 </GridLayout>

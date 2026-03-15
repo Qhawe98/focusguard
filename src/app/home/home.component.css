@@ -1,0 +1,37 @@
+/* FOCUS MODE */
+
+.focus-section {
+  padding: 15 20;
+}
+
+.focus-header {
+  font-size: 22;
+  font-weight: bold;
+  margin-bottom: 15;
+  color: white;
+}
+
+.focus-btn-container {
+  /* Space between buttons */
+}
+
+.focus-btn {
+  height: 60;
+  margin: 5;
+  border-radius: 12;
+  font-size: 16;
+  color: white;
+  font-weight: 600;
+}
+
+.start-btn {
+  background-color: #e63946;
+}
+
+.schedule-btn {
+  background-color: #457b9d;
+}
+
+.fas {
+  font-family: "Font Awesome 5 Free", "fa-solid-900";
+}

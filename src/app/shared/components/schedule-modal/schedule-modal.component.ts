@@ -3,11 +3,12 @@ import {
   Component,
   NgZone,
   NO_ERRORS_SCHEMA,
-  OnInit,
 } from "@angular/core";
-import { ModalDialogParams } from "@nativescript/angular";
-import { Utils, ImageSource } from "@nativescript/core";
 import { CommonModule } from "@angular/common";
+import { ModalDialogParams } from "@nativescript/angular";
+import { TimePickerComponent } from "../time-picker/time-picker.component";
+import { ImageSource, Utils } from "@nativescript/core";
+import { Page, Color } from "@nativescript/core";
 
 interface AppItem {
   name: string;
@@ -27,47 +28,28 @@ interface Category {
 }
 
 @Component({
-  selector: "app-focus-modal",
-  templateUrl: "./focus-modal.component.html",
-  styleUrls: ["./focus-modal.component.css"],
+  selector: "app-schedule-modal",
+  templateUrl: "./schedule-modal.component.html",
+  styleUrl: "./schedule-modal.component.css",
   schemas: [NO_ERRORS_SCHEMA],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TimePickerComponent],
 })
-export class FocusModalComponent implements OnInit {
-  finishTime: string = "";
-  durationMinutes: number = 25;
-  isScheduled: boolean = false;
-  selectedMinutes: number = 30;
+export class ScheduleModalComponent {
+  isWeekly: boolean = false;
   categories: Category[] = [];
 
-  setDuration(mins: number) {
-    this.selectedMinutes = mins;
-  }
-
+  days: boolean[] = [false, false, true, true, true, false, false];
   constructor(
     private params: ModalDialogParams,
     private cdr: ChangeDetectorRef,
     private zone: NgZone,
+    private page: Page,
   ) {
     this.categories = params.context.categories;
-  }
-
-  ngOnInit() {
-    this.calculateFinishTime();
-  }
-
-  calculateFinishTime() {
-    const now = new Date();
-    now.setMinutes(now.getMinutes() + this.durationMinutes);
-    this.finishTime = now.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
+    this.page.on("loaded", (args) => {
+      (<Page>args.object).backgroundColor = new Color("#00000000");
     });
-  }
-
-  get isAnyExpanded(): boolean {
-    return this.categories.some((cat) => cat.expanded);
   }
 
   toggleExpand(cat: Category) {
@@ -119,8 +101,12 @@ export class FocusModalComponent implements OnInit {
     }
   }
 
-  onAppToggle(app: any, cat: any, args: any) {
-    app.selected = args.value;
+  get isAnyExpanded(): boolean {
+    return this.categories.some((cat) => cat.expanded);
+  }
+
+  toggleDay(index: number) {
+    this.days[index] = !this.days[index];
   }
 
   isAllSelected(cat: any): boolean {
@@ -128,17 +114,13 @@ export class FocusModalComponent implements OnInit {
     return cat.apps.every((app) => app.selected);
   }
 
+  onAppToggle(app: any, cat: any, args: any) {
+    app.selected = args.value;
+  }
+
   onClose() {
     this.params.closeCallback({ action: "cancel" });
   }
 
-  onBeginFocus() {}
-
-  onStart() {
-    const endTime = new Date();
-    endTime.setMinutes(endTime.getMinutes() + this.selectedMinutes);
-    console.log("Focusing until:", endTime);
-
-    this.onClose();
-  }
+  onSchedule() {}
 }

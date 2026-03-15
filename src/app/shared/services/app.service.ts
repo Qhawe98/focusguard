@@ -12,10 +12,10 @@ interface AppItem {
 interface Category {
   title: string;
   packages?: string[];
-  keywords: string[];
   apps: AppItem[];
   expanded: boolean;
   loading?: boolean;
+  nativeCategory?: number;
 }
 
 declare var android: any;
@@ -23,20 +23,11 @@ declare var android: any;
 @Injectable({ providedIn: "root" })
 export class AppService {
   categories: Category[] = [
-    {
-      title: "Social",
-      packages: ["com.twitter.android"],
-      keywords: ["faceb", "insta", "twit", "tok", "snap", "linked", "whatsa"],
-      apps: [],
-      expanded: false,
-    },
-    {
-      title: "Games",
-      keywords: ["game", "roblox", "candy", "pubg", "fortnite"],
-      apps: [],
-      expanded: false,
-    },
-    { title: "Other", keywords: [], apps: [], expanded: false },
+    { title: "Games", nativeCategory: 0, apps: [], expanded: false },
+    { title: "Social", nativeCategory: 4, apps: [], expanded: false },
+    { title: "Productivity", nativeCategory: 7, apps: [], expanded: false },
+    { title: "Entertainment", nativeCategory: 3, apps: [], expanded: false },
+    { title: "Other", nativeCategory: -1, apps: [], expanded: false },
   ];
 
   loadApps() {
@@ -52,16 +43,26 @@ export class AppService {
 
     for (let i = 0; i < apps.size(); i++) {
       const appInfo = apps.get(i);
+
+      // Only process launchable apps (Apps in the drawer)
       if (pm.getLaunchIntentForPackage(appInfo.packageName)) {
         const appName = appInfo.loadLabel(pm).toString();
-        const pkgName = appInfo.packageName.toLowerCase();
 
+        // Get the native category (Supported on API 26+)
+        let appCategory = -1;
+        if (android.os.Build.VERSION.SDK_INT >= 26) {
+          appCategory = appInfo.category;
+        } else if (
+          (appInfo.flags & android.content.pm.ApplicationInfo.FLAG_IS_GAME) !==
+          0
+        ) {
+          appCategory = 0; // Legacy check for games
+        }
+
+        // Match with our defined categories
         let matched =
-          this.categories.find(
-            (cat) =>
-              cat.packages?.some((p) => pkgName === p.toLowerCase()) ||
-              cat.keywords.some((k) => appName.toLowerCase().includes(k)),
-          ) || this.categories.find((c) => c.title === "Other");
+          this.categories.find((c) => c.nativeCategory === appCategory) ||
+          this.categories.find((c) => c.title === "Other");
 
         if (matched) {
           matched.apps.push({

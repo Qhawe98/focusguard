@@ -8,9 +8,15 @@ import { TNSFontIconModule } from "nativescript-ngx-fonticon";
 import { CheckBoxModule } from "@nativescript-community/ui-checkbox/angular";
 import { TNSCheckBoxModule } from "@nstudio/nativescript-checkbox/angular";
 import { FontIconModule } from "nativescript-fonticon/angular";
+import { ScheduleModalComponent } from "./components/schedule-modal/schedule-modal.component";
+import {NativeScriptDateTimePickerModule} from '@nativescript/datetimepicker/angular'
+import { TimePickerComponent } from "./components/time-picker/time-picker.component";
 
 @NgModule({
-  declarations: [TopActionBarComponent, TimeManagerComponent],
+  declarations: [
+    TopActionBarComponent,
+    TimeManagerComponent,
+  ],
   imports: [
     NativeScriptCommonModule,
     TNSFontIconModule,
@@ -19,6 +25,7 @@ import { FontIconModule } from "nativescript-fonticon/angular";
     FontIconModule.forRoot({
       fa: require("~/assets/all.css"),
     }),
+    NativeScriptDateTimePickerModule
   ],
   exports: [
     TopActionBarComponent,
@@ -27,6 +34,8 @@ import { FontIconModule } from "nativescript-fonticon/angular";
     TNSFontIconModule,
     CheckBoxModule,
     FontIconModule,
+    ScheduleModalComponent,
+    TimePickerComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

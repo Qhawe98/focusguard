@@ -20,9 +20,23 @@
         </FlexboxLayout>
     </StackLayout>
 
-    <StackLayout row="2" class="emergency-toggle-container">
-        <label class="emergency-header">Lock More</label>
-        <Button text="Start Focus" (tap)="showFocusModal()" class="emergency-toggle-btn" image="res://icon_emergency">
-        </Button>
+    <StackLayout row="2" class="focus-section">
+        <Label text="Focus Mode" class="focus-header"></Label>
+
+        <GridLayout columns="*, *" class="focus-btn-container">
+            <Button col="0" (tap)="showFocusModal()" class="focus-btn start-btn">
+                <FormattedString>
+                    <Span text="&#xf04b;" class="fas"></Span>
+                    <Span text="  Start"></Span>
+                </FormattedString>
+            </Button>
+
+            <Button col="1" (tap)="showScheduleModal()" class="focus-btn schedule-btn">
+                <FormattedString>
+                    <Span text="&#xf251;" class="fas"></Span>
+                    <Span text="  Schedule"></Span>
+                </FormattedString>
+            </Button>
+        </GridLayout>
     </StackLayout>
 </GridLayout>

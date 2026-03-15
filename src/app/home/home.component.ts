@@ -8,10 +8,12 @@ import {
 } from "@nativescript/angular";
 import { FocusModalComponent } from "../shared/components/focus-modal/focus-modal.component";
 import { AppService } from "../shared/services/app.service";
+import { ScheduleModalComponent } from "../shared/components/schedule-modal/schedule-modal.component";
 
 @Component({
   selector: "ns-home",
   templateUrl: "./home.component.html",
+  styleUrl: "./home.component.css",
   schemas: [NO_ERRORS_SCHEMA],
   imports: [CommonModule, NativeScriptCommonModule],
   standalone: true,
@@ -61,8 +63,25 @@ export class HomeComponent {
     };
 
     this.modalService.showModal(FocusModalComponent, options).then((result) => {
-      console.log("Modal closed with:", result);
+      console.log("Focus Modal closed with:", result);
     });
+  }
+
+  showScheduleModal() {
+    const options = {
+      viewContainerRef: this.vcRef,
+      context: {
+        categories: this.appService.categories,
+      },
+      fullscreen: false,
+      animated: true,
+    };
+
+    this.modalService
+      .showModal(ScheduleModalComponent, options)
+      .then((result) => {
+        console.log("Schedule Modal closed with:", result);
+      });
   }
 
   goToHome() {

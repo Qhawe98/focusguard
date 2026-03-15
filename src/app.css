@@ -153,36 +153,6 @@ ActionBar {
 }
 
 /**
-* Emergency
-*/
-.emergency-header {
-  font-size: 24;
-  margin: 10 0;
-  color: white;
-}
-
-.emergency-toggle-container {
-  padding: 10 10;
-}
-
-.emergency-toggle-btn {
-  height: 70;
-  width: auto;
-  border-radius: 15;
-  padding: 10;
-  font-size: 22;
-  color: white;
-  background-color: rgb(160, 0, 0);
-}
-
-.emergency-toggle-btn-icon {
-  width: auto;
-  font-size: 18;
-  color: white;
-  background-color: #101a3a;
-}
-
-/**
 * Nav-bar CSS
 */
 

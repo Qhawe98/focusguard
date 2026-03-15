@@ -16,6 +16,7 @@
     "@nativescript-community/ui-checkbox": "^2.0.18",
     "@nativescript/angular": "^20.0.0",
     "@nativescript/core": "~9.0.0",
+    "@nativescript/datetimepicker": "^3.0.2",
     "@nstudio/nativescript-checkbox": "^2.0.5",
     "nativescript-applist": "^2.0.1",
     "nativescript-fonticon": "^8.1.3",
