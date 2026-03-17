@@ -6,9 +6,9 @@ import {
   ModalDialogService,
   NativeScriptCommonModule,
 } from "@nativescript/angular";
-import { FocusModalComponent } from "../shared/components/focus-modal/focus-modal.component";
+import { FocusModalComponent } from "../focus-modal/focus-modal.component";
 import { AppService } from "../shared/services/app.service";
-import { ScheduleModalComponent } from "../shared/components/schedule-modal/schedule-modal.component";
+import { ScheduleModalComponent } from "../schedule-modal/schedule-modal.component";
 
 @Component({
   selector: "ns-home",

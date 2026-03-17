@@ -6,7 +6,7 @@ import {
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ModalDialogParams } from "@nativescript/angular";
-import { TimePickerComponent } from "../time-picker/time-picker.component";
+import { TimePickerComponent } from "../shared/components/time-picker/time-picker.component";
 import { ImageSource, Utils } from "@nativescript/core";
 import { Page, Color } from "@nativescript/core";
 

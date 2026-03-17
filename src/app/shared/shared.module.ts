@@ -2,20 +2,18 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "@nativescript/angular";
 
 import { TopActionBarComponent } from "./components/top-action-bar/top-action-bar.component";
-import { TimeManagerComponent } from "./components/time-manager/time-manager.component";
 
 import { TNSFontIconModule } from "nativescript-ngx-fonticon";
 import { CheckBoxModule } from "@nativescript-community/ui-checkbox/angular";
 import { TNSCheckBoxModule } from "@nstudio/nativescript-checkbox/angular";
 import { FontIconModule } from "nativescript-fonticon/angular";
-import { ScheduleModalComponent } from "./components/schedule-modal/schedule-modal.component";
+import { ScheduleModalComponent } from "../schedule-modal/schedule-modal.component";
 import {NativeScriptDateTimePickerModule} from '@nativescript/datetimepicker/angular'
 import { TimePickerComponent } from "./components/time-picker/time-picker.component";
 
 @NgModule({
   declarations: [
     TopActionBarComponent,
-    TimeManagerComponent,
   ],
   imports: [
     NativeScriptCommonModule,
@@ -29,7 +27,6 @@ import { TimePickerComponent } from "./components/time-picker/time-picker.compon
   ],
   exports: [
     TopActionBarComponent,
-    TimeManagerComponent,
     NativeScriptCommonModule,
     TNSFontIconModule,
     CheckBoxModule,

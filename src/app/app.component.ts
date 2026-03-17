@@ -5,7 +5,7 @@ import { Application } from "@nativescript/core";
 import { TopActionBarComponent } from "./shared/components/top-action-bar/top-action-bar.component";
 import { SharedService } from "./shared/services/shared.service";
 import { Subscription } from "rxjs";
-import {FocusModalComponent} from './shared/components/focus-modal/focus-modal.component'
+import {FocusModalComponent} from './focus-modal/focus-modal.component'
 
 if (Application.android) {
   Application.android.on("activityCreated", (args) => {

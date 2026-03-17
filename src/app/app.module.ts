@@ -7,7 +7,6 @@ import { SettingsComponent } from "./settings/settings.component";
 import { ShieldComponent } from "./shield/shield.component";
 import { registerElement } from "@nativescript/angular";
 import { CheckBox } from "@nativescript-community/ui-checkbox";
-import { FocusModalComponent } from "./shared/components/focus-modal/focus-modal.component";
 import { TNSFontIconModule } from "nativescript-ngx-fonticon";
 
 registerElement("CheckBox", () => CheckBox);
