@@ -1,0 +1,101 @@
+.shield-page {
+  background-color: #1a1a1a; /* Dark background to make gray/green pop */
+}
+
+.shield-container {
+  padding: 20;
+}
+
+.section-header {
+  font-size: 14;
+  font-weight: bold;
+  color: white; /* Neon Green for headers */
+  margin: 20 0 8 5;
+  text-transform: uppercase;
+}
+
+.mode-card {
+  background-color: #808080;
+  padding: 15;
+  border-radius: 12;
+  margin-bottom: 10;
+}
+
+.mode-label {
+  color: white;
+  font-size: 18;
+  font-weight: 600;
+}
+
+.status-text {
+  color: white;
+  font-size: 14;
+  vertical-align: middle;
+  margin-right: 10;
+  opacity: 0.8;
+}
+
+/* Input Styles */
+/* Apply the single border to the parent wrapper */
+.input-container {
+  border-width: 1;
+  border-color: #808080;
+  border-radius: 10;
+  background-color: transparent;
+  margin: 10 5;
+}
+
+/* Clear individual borders and adjust spacing */
+.site-input {
+  background-color: transparent;
+  color: white;
+  placeholder-color: #d1d1d1;
+  padding: 12;
+  border-width: 0;
+}
+
+/* Icon style with a subtle left divider */
+.save-icon {
+  color: white; /* Neon Green for the '+' icon */
+  font-size: 16;
+  padding: 12 5;
+  background-color: transparent;
+}
+
+/* Button style with a divider */
+.save-btn {
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  padding: 12 15;
+  width: 20%;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+.save-icon .switch-green {
+  off-background-color: #4a4a4a;
+  color: white;
+}
+
+.blocked-list-container {
+  background-color: transparent;
+  border-radius: 12;
+}
+
+.blocked-item {
+  padding: 15;
+  border-bottom-width: 1;
+  border-bottom-color: #666;
+}
+
+.site-name {
+  color: white;
+  font-size: 16;
+}
+
+.remove-btn {
+  color: #666;
+  font-weight: bold;
+  padding: 0 10;
+}

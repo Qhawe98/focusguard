@@ -1,3 +1,47 @@
-<GridLayout rows="auto, auto, auto, auto, auto,*" class="shield-container">
-    <Label row="0" class="lock-category-label" text="Filter Categories" textAlignment="left"></Label>
-</GridLayout>
+<ScrollView class="shield-page">
+    <StackLayout class="shield-container">
+
+        <!-- Reusable Card Template -->
+        <Label text="Focus Mode Status" class="section-header"></Label>
+        <GridLayout class="mode-card" columns="*, auto, auto">
+            <Label text="Focus Mode" col="0" class="mode-label"></Label>
+            <Label text="Active" col="1" class="status-text"></Label>
+            <Switch col="2" checked="true" class="switch-green"></Switch>
+        </GridLayout>
+
+        <Label text="Parental Mode Status" class="section-header"></Label>
+        <GridLayout class="mode-card" columns="*, auto, auto">
+            <Label text="Parental Mode" col="0" class="mode-label"></Label>
+            <Label text="Active" col="1" class="status-text"></Label>
+            <Switch col="2" class="switch-green" />
+        </GridLayout>
+
+        <Label text="Security Mode Status" class="section-header"></Label>
+        <GridLayout class="mode-card" columns="*, auto, auto">
+            <Label text="Security Mode" col="0" class="mode-label"></Label>
+            <Label text="Active" col="1" class="status-text"></Label>
+            <Switch col="2" class="switch-green" />
+        </GridLayout>
+
+        <Label text="Add other sites to block manually" class="section-header"></Label>
+        <GridLayout columns="*, auto, auto" class="input-container" verticalAlignment="middle">
+            <TextField col="0" [(ngModel)]="siteValue" name="siteInput" hint="www.site.com" class="site-input" />
+            <Label col="1" class="fas save-icon" text="&#xf067;"></Label>
+            <Button col="2" text="Add" (tap)="onAddSite()" class="save-btn"></Button>
+        </GridLayout>
+
+
+        <Label text="Currently Blocked" class="section-header" margin="30 0 10 5"></Label>
+
+        <!-- Only this area will scroll -->
+        <ScrollView height="200" class="blocked-scroll-container">
+            <StackLayout class="blocked-list-container">
+                <GridLayout columns="*, auto" class="blocked-item" *ngFor="let item of blockedSiteList">
+                    <Label col="0" [text]="item.url" class="site-name"></Label>
+                    <Label col="1" text="&#xf1f8;" class="fas remove-btn" (tap)="onRemoveSite(item.id)">
+                    </Label>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ScrollView>
