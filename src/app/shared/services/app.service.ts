@@ -44,11 +44,9 @@ export class AppService {
     for (let i = 0; i < apps.size(); i++) {
       const appInfo = apps.get(i);
 
-      // Only process launchable apps (Apps in the drawer)
       if (pm.getLaunchIntentForPackage(appInfo.packageName)) {
         const appName = appInfo.loadLabel(pm).toString();
 
-        // Get the native category (Supported on API 26+)
         let appCategory = -1;
         if (android.os.Build.VERSION.SDK_INT >= 26) {
           appCategory = appInfo.category;
@@ -56,10 +54,9 @@ export class AppService {
           (appInfo.flags & android.content.pm.ApplicationInfo.FLAG_IS_GAME) !==
           0
         ) {
-          appCategory = 0; // Legacy check for games
+          appCategory = 0;
         }
 
-        // Match with our defined categories
         let matched =
           this.categories.find((c) => c.nativeCategory === appCategory) ||
           this.categories.find((c) => c.title === "Other");

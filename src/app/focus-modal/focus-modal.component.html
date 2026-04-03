@@ -59,6 +59,7 @@
 
     <GridLayout row="3" columns="auto,*, auto" class="footer">
         <Button text="Cancel" col="0" (tap)="onClose()" class="btn-cancel"></Button>
-        <Button text="Start Focus" col="2" (tap)="onStart()" class="btn-start"></Button>
+        <Button text="Start Focus" [isEnabled]="canStartFocus" col="2" (tap)="onStart()" class="btn-start">
+        </Button>
     </GridLayout>
 </GridLayout>

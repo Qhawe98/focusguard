@@ -103,6 +103,11 @@
   height: 40;
 }
 
+.btn-start:disabled {
+    opacity: 0.4;
+    background-color: #cccccc;
+}
+
 .btn-cancel {
   background-color: red;
   color: white;

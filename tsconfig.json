@@ -12,11 +12,12 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNext", "dom"],
-    "baseUrl": ".",
+    "types": ["node", "@nativescript/types-android"],
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"]
-    }
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
+    },
+    "ignoreDeprecations": "5.0"
   },
   "include": ["src/tests/**/*.ts", "src/**/*.ios.ts", "src/**/*.android.ts"],
   "files": ["./src/main.ts", "./references.d.ts", "./src/polyfills.ts"],

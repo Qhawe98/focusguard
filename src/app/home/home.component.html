@@ -1,5 +1,7 @@
 <GridLayout class="home-container" rows="*,auto,auto">
-    <StackLayout [class.shield-on]="isProtected" [class.shield-off]="!isProtected" class="shield-base">
+    <StackLayout [class.shield-on]="isProtected" [class.shield-off]="!isProtected" class="shield-base"
+        (tap)="onShieldTap()">
+
         <Label class="fas shield-icon" [text]="isProtected ? '\uf3ed' : '\uf3ed'"></Label>
 
         <Label text="Protection" class="shield-text-protection"></Label>
